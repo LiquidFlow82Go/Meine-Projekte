@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wasser &amp; Leben – warum Wasser für uns Menschen wichtig ist</title>
+<meta name="description" content="Eine ruhige, interaktive Seite darüber, warum Wasser für uns Menschen wichtig ist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,500&display=swap">
+<style>
+/* Design System „Sanft“ – Tokens */
+:root{
+--surface:#fff1e8;--surface-raised:#ffffff;--surface-inverse:#0f0b08;
+--ink:#0f0b08;--ink-700:#49433f;--ink-muted:#867c74;--on-inverse:#ffffff;
+--line:#e7e5e4;--line-strong:#cdc9c6;--neutral-400:#b6afaa;
+--shadow-button:0px 1px 4px 0px rgba(25,33,61,.08);
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--space-8:32px;--space-12:48px;--space-15:60px;--space-20:80px;
+--radius-none:0px;--radius-pill:100px;
+--font-display:"Fraunces",Georgia,serif;--font-sans:"DM Sans",system-ui,sans-serif;
+}
+/* Sanft – Komponenten */
+.sf-btn{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-display);font-weight:300;font-size:16px;line-height:19px;padding:11px 18px;border-radius:var(--radius-pill);border:1px solid var(--line-strong);background:var(--surface-raised);color:var(--ink);box-shadow:var(--shadow-button);text-decoration:none;cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease}
+.sf-btn:hover{transform:translateY(-2px);color:var(--ink)}
+.sf-btn-primary,.sf-btn-primary:hover{background:var(--ink);border-color:var(--ink);color:var(--on-inverse)}
+.sf-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.sf-inverse .sf-btn{background:var(--surface-raised);color:var(--ink);border-color:var(--surface-raised)}
+.sf-header{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) 0;flex-wrap:wrap}
+.sf-logo{font-family:var(--font-display);font-weight:300;font-size:16px;line-height:24px;color:var(--ink)}
+.sf-nav{display:flex;gap:var(--space-6)}
+.sf-nav a{font-size:12px;line-height:16px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.sf-nav a:hover{color:var(--ink-700)}
+.sf-header-actions .sf-btn{font-size:14px;padding:8px 14px}
+
+/* Seite */
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--surface);color:var(--ink-700);font-family:var(--font-sans);font-size:16px;line-height:24px;overflow-x:hidden}
+a{color:var(--ink)}
+p{margin:0}
+.wt-wrap{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px;box-sizing:border-box}
+.wt-sec{border-top:1px solid var(--line-strong)}
+.wt-pad{padding-top:80px;padding-bottom:80px}
+.wt-row{display:flex;flex-wrap:wrap;gap:48px}
+.wt-col{display:flex;flex-direction:column;gap:24px;min-width:0}
+.wt-h1{font-family:var(--font-display);font-weight:300;font-size:clamp(40px,6vw,56px);line-height:1.125;color:var(--ink);margin:0}
+.wt-h2{font-family:var(--font-display);font-weight:300;font-size:36px;line-height:40px;color:var(--ink);margin:0}
+.wt-h3{margin:0;font-family:var(--font-display);font-weight:300;font-size:22px;line-height:29px;color:var(--ink)}
+.wt-meta{font-weight:500;font-size:12px;line-height:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-700)}
+.wt-small{font-size:14px;line-height:20px}
+.wt-big{font-family:var(--font-display);font-weight:300;font-size:88px;line-height:1;color:var(--ink)}
+.wt-card{background:var(--surface-raised);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:12px;flex:1 1 300px;box-sizing:border-box;transition:transform .3s ease,border-color .3s ease}
+.wt-card:hover{transform:translateY(-4px);border-color:var(--ink)}
+.wt-card svg{transition:transform .5s ease}
+.wt-card:hover svg{transform:rotate(-8deg) scale(1.1)}
+.wt-pond{position:relative;display:block;width:100%;aspect-ratio:4/5;padding:0;margin:0;border:1px solid var(--line-strong);border-radius:0;background:var(--surface-raised);overflow:hidden;cursor:pointer}
+.wt-pond:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wt-wave{position:absolute;left:0;bottom:0;width:200%;display:block}
+.wt-w1{animation:wt-drift 14s linear infinite}
+.wt-w2{animation:wt-drift 9s linear infinite reverse}
+.wt-w3{animation:wt-drift 6s linear infinite}
+.wt-drop{position:absolute;left:50%;top:0;width:22px;height:30px;margin-left:-11px;animation:wt-fall 3.2s cubic-bezier(.6,0,.9,.6) infinite}
+.wt-ring{position:absolute;left:50%;top:60%;width:90px;height:26px;margin:-13px 0 0 -45px;border:1px solid var(--ink);border-radius:50%;opacity:0;animation:wt-ring 3.2s ease-out infinite}
+.wt-rip{position:absolute;width:180px;height:180px;margin:-90px 0 0 -90px;border:1px solid #fff;border-radius:50%;mix-blend-mode:difference;pointer-events:none;animation:wt-rip 1.6s ease-out forwards}
+.wt-vessel{position:relative;width:220px;height:360px;border:1px solid var(--ink);background:var(--surface-raised);overflow:hidden;box-sizing:border-box}
+.wt-fill{position:absolute;left:0;right:0;bottom:0;height:60%;background:var(--ink);transition:height 1s cubic-bezier(.3,.9,.3,1)}
+.wt-fillwave{position:absolute;left:0;bottom:100%;width:200%;height:14px;display:block;margin-bottom:-1px;animation:wt-drift 5s linear infinite}
+.wt-chips{display:flex;flex-wrap:wrap;gap:8px}
+.wt-chips .sf-btn,.wt-toggles .sf-btn{min-height:44px}
+.wt-toggles{display:flex;flex-wrap:wrap;gap:16px}
+.wt-fade{animation:wt-fade .5s ease both}
+.wt-panel{background:var(--surface-raised);border:1px solid var(--line);padding:32px;box-sizing:border-box}
+.wt-glasses{display:flex;flex-wrap:wrap;gap:8px;min-height:72px;align-content:flex-start}
+.wt-glass{position:relative;width:22px;height:32px;border:1px solid var(--ink);border-top-color:transparent;box-sizing:border-box;overflow:hidden;background:var(--surface-raised)}
+.wt-glass span{position:absolute;left:0;right:0;bottom:0;height:78%;background:var(--ink);transform-origin:bottom;animation:wt-pour .6s ease-out both}
+.wt-range{width:100%;accent-color:#0f0b08;height:44px;margin:0}
+.wt-steps{display:flex;flex-direction:column;border-bottom:1px solid var(--line-strong)}
+.wt-step{display:flex;align-items:baseline;gap:16px;width:100%;min-height:56px;padding:14px 0;background:none;border:0;border-top:1px solid var(--line-strong);border-radius:0;text-align:left;cursor:pointer;font-family:var(--font-display);font-weight:300;font-size:22px;line-height:29px;color:var(--ink-700);transition:color .3s ease,padding-left .3s ease}
+.wt-step small{font-family:var(--font-sans);font-weight:500;font-size:12px;letter-spacing:.06em}
+.wt-step:hover,.wt-step[aria-pressed="true"]{color:var(--ink);padding-left:8px}
+.wt-step:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wt-cycle g[data-step]{transition:opacity .6s ease;opacity:.2}
+.wt-cycle g[data-step].on{opacity:1}
+.wt-vapor{stroke-dasharray:6 8;animation:wt-rise 2.4s linear infinite}
+.wt-rain{stroke-dasharray:8 10;animation:wt-rainfall 1.1s linear infinite}
+.wt-river{stroke-dasharray:10 8;animation:wt-rainfall 2s linear infinite}
+.wt-sun{transform-origin:70px 62px;animation:wt-spin 24s linear infinite}
+.wt-cloud{animation:wt-float 6s ease-in-out infinite}
+.sf-inverse{background:var(--surface-inverse);color:var(--on-inverse)}
+.sf-inverse p{color:var(--line)}
+.wt-tip{flex:1 1 260px;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:8px}
+.wt-tip .wt-h3{color:var(--on-inverse)}
+.wt-rv{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s ease}
+.wt-rv.in{opacity:1;transform:none}
+@keyframes wt-drift{from{transform:translateX(0)}to{transform:translateX(-25%)}}
+@keyframes wt-fall{0%{top:-8%;opacity:0}10%{opacity:1}55%{top:56%;opacity:1}60%,100%{top:56%;opacity:0}}
+@keyframes wt-ring{0%,55%{transform:scale(.1);opacity:0}58%{opacity:.9}100%{transform:scale(2.4);opacity:0}}
+@keyframes wt-rip{from{transform:scale(.05);opacity:1}to{transform:scale(1);opacity:0}}
+@keyframes wt-pour{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes wt-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes wt-rise{from{stroke-dashoffset:0}to{stroke-dashoffset:28}}
+@keyframes wt-rainfall{from{stroke-dashoffset:0}to{stroke-dashoffset:-36}}
+@keyframes wt-spin{to{transform:rotate(360deg)}}
+@keyframes wt-float{0%,100%{transform:translateX(0)}50%{transform:translateX(10px)}}
+@media (max-width:760px){
+.sf-nav{display:none}
+.wt-wrap{padding-left:16px;padding-right:16px}
+.wt-h2{font-size:30px;line-height:35px}
+.wt-big{font-size:64px}
+}
+@media (prefers-reduced-motion:reduce){
+*{animation:none !important;transition:none !important}
+html{scroll-behavior:auto}
+.wt-rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body id="top">
+
+<div class="wt-wrap">
+<header class="sf-header">
+<span class="sf-logo">Wasser</span>
+<nav class="sf-nav" aria-label="Hauptnavigation">
+<a href="#koerper">Körper</a><a href="#aufgaben">Aufgaben</a><a href="#bedarf">Bedarf</a><a href="#kreislauf">Kreislauf</a>
+</nav>
+<div class="sf-header-actions"><a class="sf-btn" href="#bedarf">Bedarf berechnen</a></div>
+</header>
+</div>
+
+<main>
+<section class="wt-wrap wt-row" style="padding-top:60px;padding-bottom:80px;align-items:center">
+<div class="wt-col" style="flex:1 1 420px">
+<p class="wt-meta">Gesundheit · Grundlagen</p>
+<h1 class="wt-h1">Wasser &amp; Leben</h1>
+<p style="max-width:480px">Wir bestehen zu mehr als der Hälfte aus Wasser. Es kühlt uns, trägt Nährstoffe durch den Körper und hält den Kopf klar. Diese Seite zeigt in Ruhe, warum jeder Schluck zählt.</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px">
+<a class="sf-btn sf-btn-primary" href="#koerper">Mehr erfahren</a>
+<a class="sf-btn" href="#kreislauf">Kreislauf ansehen</a>
+</div>
+</div>
+<div style="flex:1 1 360px;min-width:0;max-width:480px;display:flex;flex-direction:column;gap:12px">
+<button type="button" class="wt-pond" id="pond" aria-label="Wasserfläche. Tippen lässt Wellen entstehen.">
+<svg class="wt-drop" viewBox="0 0 22 30" aria-hidden="true"><path d="M11 1c5 7 9 11.5 9 17a9 9 0 0 1-18 0c0-5.5 4-10 9-17z" fill="#0f0b08"/></svg>
+<svg class="wt-wave wt-w1" style="height:46%" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 Q75 0 150 20 T300 20 T450 20 T600 20 T750 20 T900 20 T1050 20 T1200 20 V200 H0 Z" fill="#b6afaa"/></svg>
+<svg class="wt-wave wt-w2" style="height:40%" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 Q75 0 150 20 T300 20 T450 20 T600 20 T750 20 T900 20 T1050 20 T1200 20 V200 H0 Z" fill="#49433f"/></svg>
+<svg class="wt-wave wt-w3" style="height:33%" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 Q75 0 150 20 T300 20 T450 20 T600 20 T750 20 T900 20 T1050 20 T1200 20 V200 H0 Z" fill="#0f0b08"/></svg>
+<span class="wt-ring" aria-hidden="true"></span>
+</button>
+<p class="wt-small">Tippen Sie auf die Wasserfläche. Jede Berührung zieht Kreise.</p>
+</div>
+</section>
+
+<section id="koerper" class="wt-sec">
+<div class="wt-wrap wt-pad wt-row wt-rv" style="align-items:center">
+<div style="flex:0 1 260px;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<div class="wt-vessel" role="img" id="vessel" aria-label="Ganzer Körper: rund 60 Prozent Wasser">
+<div class="wt-fill" id="fill"><svg class="wt-fillwave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 Q75 0 150 20 T300 20 T450 20 T600 20 T750 20 T900 20 T1050 20 T1200 20 V40 H0 Z" fill="#0f0b08"/></svg></div>
+</div>
+<p class="wt-small">Füllstand: Wasseranteil</p>
+</div>
+<div class="wt-col" style="flex:999 1 420px">
+<p class="wt-meta">Anteil · Organe</p>
+<h2 class="wt-h2">Körper &amp; Wasser</h2>
+<div class="wt-chips" role="group" aria-label="Körperteil wählen" id="parts"></div>
+<div aria-live="polite" id="partOut" style="display:flex;flex-direction:column;gap:12px">
+<p class="wt-big"><span id="pct">60</span> %</p>
+<p style="max-width:520px" id="partText"></p>
+</div>
+<p class="wt-small">Werte nach H. H. Mitchell u. a., Journal of Biological Chemistry, 1945.</p>
+</div>
+</div>
+</section>
+
+<section id="aufgaben" class="wt-sec">
+<div class="wt-wrap wt-pad" style="display:flex;flex-direction:column;gap:48px">
+<div class="wt-rv" style="display:flex;flex-direction:column;gap:12px;max-width:560px">
+<p class="wt-meta">Sechs Gründe</p>
+<h2 class="wt-h2">Aufgaben &amp; Wirkung</h2>
+<p>Wasser arbeitet leise. Fast jeder Vorgang im Körper braucht es.</p>
+</div>
+<div class="wt-rv" style="display:flex;flex-wrap:wrap;gap:32px">
+<article class="wt-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0f0b08" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4a2 2 0 0 1 4 0v9.5a4.5 4.5 0 1 1-4 0z"/><path d="M12 9v7"/></svg><h3 class="wt-h3">Temperatur regeln</h3><p class="wt-small">Schweiß verdunstet auf der Haut und kühlt. So bleibt der Körper bei rund 37 Grad.</p></article>
+<article class="wt-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0f0b08" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg><h3 class="wt-h3">Nährstoffe tragen</h3><p class="wt-small">Blut besteht größtenteils aus Wasser. Es bringt Sauerstoff und Nährstoffe in jede Zelle.</p></article>
+<article class="wt-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0f0b08" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.5 4.5 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 2.5-6.5 6-11z"/></svg><h3 class="wt-h3">Abfall ausspülen</h3><p class="wt-small">Die Nieren filtern das Blut. Mit genug Wasser verlassen Abbauprodukte den Körper.</p></article>
+<article class="wt-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0f0b08" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/></svg><h3 class="wt-h3">Gelenke schützen</h3><p class="wt-small">Gelenkflüssigkeit und Bandscheiben brauchen Wasser. Es polstert jede Bewegung.</p></article>
+<article class="wt-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0f0b08" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4-2-7-5.5-7-10a7 7 0 0 1 14 0c0 4.5-3 8-7 10z"/><path d="M12 21V9"/></svg><h3 class="wt-h3">Verdauung stützen</h3><p class="wt-small">Speichel und Verdauungssäfte lösen die Nahrung. Ballaststoffe quellen nur mit Wasser.</p></article>
+<article class="wt-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0f0b08" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg><h3 class="wt-h3">Klar denken</h3><p class="wt-small">Schon ein leichter Mangel macht müde und unkonzentriert. Ein Glas Wasser hilft oft.</p></article>
+</div>
+</div>
+</section>
+
+<section id="bedarf" class="wt-sec">
+<div class="wt-wrap wt-pad wt-row wt-rv" style="align-items:flex-start">
+<div class="wt-col" style="flex:1 1 380px">
+<p class="wt-meta">Rechner · Richtwert</p>
+<h2 class="wt-h2">Bedarf &amp; Alltag</h2>
+<p>Als Faustregel gelten rund 30 Milliliter je Kilogramm Körpergewicht am Tag. Bewegung und Hitze erhöhen den Bedarf.</p>
+<div style="display:flex;flex-direction:column;gap:8px">
+<label for="kg" style="display:flex;justify-content:space-between;gap:16px;color:var(--ink)"><span>Körpergewicht</span><span><span id="kgOut">70</span> kg</span></label>
+<input id="kg" class="wt-range" type="range" min="40" max="120" step="1" value="70">
+</div>
+<div class="wt-toggles" role="group" aria-label="Tagesform">
+<button type="button" class="sf-btn" id="sport" aria-pressed="false">Sport heute</button>
+<button type="button" class="sf-btn" id="heat" aria-pressed="false">Heißer Tag</button>
+</div>
+</div>
+<div class="wt-panel wt-col" aria-live="polite" style="flex:1 1 380px">
+<p class="wt-small">Gesamtbedarf am Tag, Getränke und Nahrung zusammen</p>
+<p class="wt-big"><span id="liters">2,1</span> l</p>
+<div class="wt-glasses" id="glasses" aria-hidden="true"></div>
+<p style="color:var(--ink)">Das entspricht etwa <span id="glassCount">8</span> Gläsern mit je 0,25 Litern.</p>
+<p class="wt-small">Grober Richtwert für gesunde Erwachsene, kein medizinischer Rat. Ein Teil des Wassers kommt aus dem Essen.</p>
+</div>
+</div>
+</section>
+
+<section id="kreislauf" class="wt-sec">
+<div class="wt-wrap wt-pad wt-row wt-rv" style="align-items:center">
+<div class="wt-col" style="flex:1 1 380px">
+<p class="wt-meta">Natur · Vier Schritte</p>
+<h2 class="wt-h2">Kreislauf &amp; Herkunft</h2>
+<p>Das Wasser in unserem Glas ist uralt. Es wandert immer wieder durch denselben Kreislauf.</p>
+<div class="wt-steps" id="steps"></div>
+</div>
+<div class="wt-col" style="flex:1 1 380px">
+<div class="wt-panel" style="padding:16px">
+<svg class="wt-cycle" id="cycle" viewBox="0 0 400 300" role="img" aria-label="Schema des Wasserkreislaufs mit Sonne, Wolke, Regen, Land und Meer" style="display:block;width:100%;height:auto" fill="none" stroke="#0f0b08" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<g data-step="0" class="on"><g class="wt-sun"><circle cx="70" cy="62" r="20"/><path d="M70 28v-10M70 106v-10M36 62h-10M114 62h-10M46 38l-7-7M101 93l-7-7M46 86l-7 7M101 31l-7 7"/></g><path class="wt-vapor" d="M60 236c-8-14 8-22 0-36s8-22 0-36"/><path class="wt-vapor" d="M95 236c-8-14 8-22 0-36s8-22 0-36"/><path class="wt-vapor" d="M130 236c-8-14 8-22 0-36s8-22 0-36"/></g>
+<g data-step="1"><path class="wt-cloud" d="M228 104a22 22 0 0 1 6-43 30 30 0 0 1 57-6 25 25 0 0 1 27 49z"/></g>
+<g data-step="2"><path class="wt-rain" d="M246 122l-10 36"/><path class="wt-rain" d="M272 122l-10 36"/><path class="wt-rain" d="M298 122l-10 36"/></g>
+<g data-step="3"><path d="M190 250l70-74 34 30 26-22 60 66"/><path class="wt-river" d="M262 196c-6 18 10 24 0 38s-40 14-72 18"/><path d="M20 252c14-10 28-10 42 0s28 10 42 0 28-10 42 0 28 10 42 0"/><path d="M20 272c14-10 28-10 42 0s28 10 42 0 28-10 42 0 28 10 42 0"/></g>
+</svg>
+</div>
+<div aria-live="polite" id="stepOut" style="display:flex;flex-direction:column;gap:8px;min-height:110px">
+<h3 class="wt-h3" style="font-size:28px;line-height:31px" id="stepTitle"></h3>
+<p id="stepText"></p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sf-inverse">
+<div class="wt-wrap wt-pad wt-rv" style="display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:24px;max-width:640px">
+<h2 class="wt-h2" style="color:var(--on-inverse)">Wert &amp; Schutz</h2>
+<p>Ohne Nahrung kommt ein Mensch einige Wochen aus, ohne Wasser nur wenige Tage. Rund 97 Prozent des Wassers der Erde sind salzig. Sauberes Trinkwasser ist deshalb kostbar.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:32px">
+<div class="wt-tip"><h3 class="wt-h3">Regelmäßig trinken</h3><p class="wt-small">Kleine Mengen über den Tag verteilt. Durst ist bereits ein spätes Signal.</p></div>
+<div class="wt-tip"><h3 class="wt-h3">Bewusst nutzen</h3><p class="wt-small">Kürzer duschen, Hahn zudrehen, Regenwasser für den Garten sammeln.</p></div>
+<div class="wt-tip"><h3 class="wt-h3">Sauber halten</h3><p class="wt-small">Medikamente, Öle und Farben gehören nicht in den Abfluss.</p></div>
+</div>
+<footer style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border-top:1px solid var(--ink-700);padding-top:24px">
+<span style="font-family:var(--font-display);font-weight:300;font-size:20px">Wasser</span>
+<a class="sf-btn" href="#top">Nach oben</a>
+</footer>
+</div>
+</section>
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function replay(el) { el.classList.remove('wt-fade'); void el.offsetWidth; el.classList.add('wt-fade'); }
+
+  // Wellen auf der Wasserfläche
+  var pond = $('pond');
+  pond.addEventListener('click', function (e) {
+    var box = pond.getBoundingClientRect();
+    var kb = e.detail === 0;
+    var r = document.createElement('span');
+    r.className = 'wt-rip';
+    r.setAttribute('aria-hidden', 'true');
+    r.style.left = (kb ? box.width / 2 : e.clientX - box.left) + 'px';
+    r.style.top = (kb ? box.height * 0.6 : e.clientY - box.top) + 'px';
+    pond.appendChild(r);
+    setTimeout(function () { r.remove(); }, 1700);
+  });
+
+  // Körper & Wasser
+  var PARTS = [
+    { label: 'Ganzer Körper', pct: 60, text: 'Ein erwachsener Mensch besteht zu rund 60 Prozent aus Wasser. Bei Säuglingen ist der Anteil höher, im Alter sinkt er.' },
+    { label: 'Gehirn', pct: 73, text: 'Das Gehirn reagiert empfindlich auf Flüssigkeitsmangel. Müdigkeit und Kopfschmerzen sind frühe Zeichen.' },
+    { label: 'Lunge', pct: 83, text: 'Feuchte Schleimhäute machen den Gasaustausch möglich. Mit jedem Atemzug geben wir etwas Wasser ab.' },
+    { label: 'Muskeln', pct: 79, text: 'Muskeln speichern viel Wasser. Es hilft ihnen, Kraft zu entwickeln und sich zu erholen.' },
+    { label: 'Haut', pct: 64, text: 'Die Haut schützt vor dem Austrocknen und kühlt den Körper über Schweiß.' },
+    { label: 'Knochen', pct: 31, text: 'Selbst Knochen enthalten Wasser. Es macht sie belastbar statt spröde.' }
+  ];
+  var partBtns = PARTS.map(function (p, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'sf-btn'; b.textContent = p.label;
+    b.addEventListener('click', function () { pickPart(i, true); });
+    $('parts').appendChild(b);
+    return b;
+  });
+  function pickPart(i, anim) {
+    var p = PARTS[i];
+    partBtns.forEach(function (b, j) {
+      b.classList.toggle('sf-btn-primary', i === j);
+      b.setAttribute('aria-pressed', String(i === j));
+    });
+    $('pct').textContent = p.pct;
+    $('partText').textContent = p.text;
+    $('fill').style.height = p.pct + '%';
+    $('vessel').setAttribute('aria-label', p.label + ': rund ' + p.pct + ' Prozent Wasser');
+    if (anim) replay($('partOut'));
+  }
+  pickPart(0, false);
+
+  // Bedarf
+  var sport = false, heat = false, lastCount = 0;
+  function calc() {
+    var kg = Number($('kg').value);
+    var total = kg * 0.03 + (sport ? 0.5 : 0) + (heat ? 0.5 : 0);
+    var count = Math.round(total / 0.25);
+    $('kgOut').textContent = kg;
+    $('liters').textContent = total.toFixed(1).replace('.', ',');
+    $('glassCount').textContent = count;
+    var g = $('glasses');
+    while (g.children.length > count) g.lastChild.remove();
+    for (var i = g.children.length; i < count; i++) {
+      var s = document.createElement('span'); s.className = 'wt-glass';
+      var f = document.createElement('span'); f.style.animationDelay = ((i - lastCount) * 40) + 'ms';
+      s.appendChild(f); g.appendChild(s);
+    }
+    lastCount = count;
+  }
+  function toggle(btn, val) { btn.classList.toggle('sf-btn-primary', val); btn.setAttribute('aria-pressed', String(val)); calc(); }
+  $('kg').addEventListener('input', calc);
+  $('sport').addEventListener('click', function () { sport = !sport; toggle(this, sport); });
+  $('heat').addEventListener('click', function () { heat = !heat; toggle(this, heat); });
+  calc();
+
+  // Kreislauf
+  var STEPS = [
+    { title: 'Verdunstung', text: 'Die Sonne erwärmt Meere, Seen und Böden. Wasser steigt als unsichtbarer Dampf auf.' },
+    { title: 'Kondensation', text: 'In der Höhe kühlt der Dampf ab. Feine Tröpfchen sammeln sich zu Wolken.' },
+    { title: 'Niederschlag', text: 'Werden die Tropfen zu schwer, fallen sie als Regen, Schnee oder Hagel.' },
+    { title: 'Sammlung', text: 'Wasser versickert, füllt Grundwasser und Flüsse und fließt zurück ins Meer.' }
+  ];
+  var groups = document.querySelectorAll('#cycle g[data-step]');
+  var stepBtns = STEPS.map(function (s, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'wt-step';
+    b.innerHTML = '<small>0' + (i + 1) + '</small><span></span>';
+    b.lastChild.textContent = s.title;
+    b.addEventListener('click', function () { pickStep(i, true); });
+    $('steps').appendChild(b);
+    return b;
+  });
+  function pickStep(i, anim) {
+    stepBtns.forEach(function (b, j) { b.setAttribute('aria-pressed', String(i === j)); });
+    groups.forEach(function (g) { g.classList.toggle('on', Number(g.dataset.step) === i); });
+    $('stepTitle').textContent = STEPS[i].title;
+    $('stepText').textContent = STEPS[i].text;
+    if (anim) replay($('stepOut'));
+  }
+  pickStep(0, false);
+
+  // Sanftes Einblenden beim Scrollen
+  var rv = document.querySelectorAll('.wt-rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    rv.forEach(function (el) { io.observe(el); });
+  } else {
+    rv.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
